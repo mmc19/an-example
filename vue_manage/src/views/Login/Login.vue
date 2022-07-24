@@ -62,20 +62,21 @@ export default {
     login() {
       getMenu(this.form).then(({ data: res }) => {
         if (res.code === 20000) {
-          //   this.$store.commit("tab/CLEARMENU");
-          //   this.$store.commit("tab/SETMENU", res.menu);
-          //   this.$store.commit("user/SETTOKEN", res.token);
-          //   this.$store.commit("tab/ADDMENU", this.$router);
+          this.$store.commit("tab/CLEARMENU");
+          this.$store.commit("tab/SETMENU", res.data.menu);
+          this.$store.commit("user/SETTOKEN", res.data.token);
+          this.$store.commit("tab/ADDMENU", this.$router);
           this.$router.push({ name: "home" });
+          // console.log(111111, res);
         } else {
-          this.$message.warning(res.message);
+          this.$message.warning(res.data.message);
         }
       });
-      //   const token = Mock.random.guid();
-      //   this.$store.commit("user/SETTOKEN", token);
-      //   this.$router.push({
-      //     name: "home",
-      //   });
+      // const token = Mock.random.guid();
+      // this.$store.commit("user/SETTOKEN", token);
+      // this.$router.push({
+      //   name: "home",
+      // });
     },
   },
 };

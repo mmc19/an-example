@@ -1,9 +1,10 @@
 import Mock from 'mockjs'
 export default {
     getMenu: config => {
-        console.log(config);
+        // console.log(config);
         const { username, password } = JSON.parse(config.body)
-        console.log(JSON.parse(config.body))
+        // const { username, password } = JSON.parse(config)
+        console.log(111, JSON.parse(config.body))
         // 先判断用户是否存在
         // 判断账号和密码是否对应
         if (username === 'admin' && password === 'admin') {
@@ -11,26 +12,27 @@ export default {
                 code: 20000,
                 data: {
                     menu: [
+
                         {
-                            path: '/',
+                            path: '/home',
                             name: 'home',
                             label: '首页',
                             icon: 's-home',
-                            url: 'Home/Home'
+                            url: 'home/index'
                         },
                         {
                             path: '/mall',
                             name: 'mall',
                             label: '商品管理',
                             icon: 'video-play',
-                            url: 'Mall/Mall'
+                            url: 'mall/index'
                         },
                         {
                             path: '/user',
                             name: 'user',
                             label: '用户管理',
                             icon: 'user',
-                            url: 'User/User'
+                            url: 'User/index'
                         },
                         {
                             label: '其他',
@@ -41,14 +43,14 @@ export default {
                                     name: 'page1',
                                     label: '页面1',
                                     icon: 'setting',
-                                    url: 'Other/PageOne.vue'
+                                    url: 'other/pageOne.vue'
                                 },
                                 {
                                     path: '/page2',
                                     name: 'page2',
                                     label: '页面2',
                                     icon: 'setting',
-                                    url: 'Other/PageTwo.vue'
+                                    url: 'other/pageTwo.vue'
                                 }
                             ]
                         }

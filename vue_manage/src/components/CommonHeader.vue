@@ -20,7 +20,7 @@
         </span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item>个人中心</el-dropdown-item>
-          <el-dropdown-item>退出</el-dropdown-item>
+          <el-dropdown-item @click.native="loginOut">退出</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </div>
@@ -41,6 +41,13 @@ export default {
     // handleMenu() {
     //   this.$store.commit("tab/COLLAPSE");
     // },
+    loginOut() {
+      this.$store.commit("user/CLEARTOKEN");
+      this.$store.commit("tab/CLEARMENU");
+      this.$router.push({
+        name: "login",
+      });
+    },
   },
   computed: {
     ...mapState("tab", { tags: "tabsList" }),

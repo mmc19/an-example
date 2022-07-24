@@ -1,4 +1,4 @@
-// import router from "@/router"
+import router from "@/router"
 import Cookie from "js-cookie"
 export default {
     namespaced: true,
@@ -28,11 +28,10 @@ export default {
             Cookie.set('menu', JSON.stringify(value))
         },
         CLEARMENU(state, value) {
-            state.menu = [],
-                Cookie.remove('menu')
+            state.menu = []
+            Cookie.remove('menu')
         },
         ADDMENU(state, router) {
-
             if (!Cookie.get('menu')) {
                 return
             }
@@ -55,6 +54,9 @@ export default {
             menuArray.forEach(item => {
                 router.addRoute('Main', item)
             })
+            console.log(555, menuArray);
+
+
         }
     },
     state: {
